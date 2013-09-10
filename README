@@ -4,3 +4,4 @@
         
 	For more details: www.marks-space.com
 
+        Compile buttonExample with "gcc -g -o buttonExample  buttonExample.c -l wiringPi"
