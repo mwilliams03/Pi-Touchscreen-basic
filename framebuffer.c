@@ -24,6 +24,7 @@
 #include <stdlib.h>
 #include <linux/fb.h>
 #include <sys/mman.h>
+#include "font_8x8.c"
 
 
 #define KNRM  "\x1B[0m"
@@ -91,15 +92,16 @@ void put_pixel_16bpp(int x, int y, int r, int g, int b)
 }
 
 
-void drawSquare(int x, int y)
+void drawSquare(int x, int y,int height, int width,  int c)
+//void drawSquare(int x, int y)
 {
-	int height = 5;
-	int width = 5;
+//	int height = 20;
+//	int width = 20;
 	int h = 0;
 	int w = 0;
 	for ( h = 0; h< height;h++)
 		for ( w = 0; w< width;w++)
-			put_pixel_16bpp( h+(x-2), w+(y-2) , def_r[YELLOW],def_g[YELLOW],def_b[YELLOW]);
+			put_pixel_16bpp( h+(x-2), w+(y-2) , def_r[c],def_g[c],def_b[c]);
 
 }
 
@@ -173,4 +175,22 @@ void closeFramebuffer()
 	}
 	close(fb);
 
+}
+void put_char(int x, int y, int c, int colidx)
+{
+	int i,j,bits;
+	for (i = 0; i < font_vga_8x8.height; i++) {
+	bits = font_vga_8x8.data [font_vga_8x8.height * c + i];
+		for (j = 0; j < font_vga_8x8.width; j++, bits <<= 1)
+			if (bits & 0x80){
+				put_pixel_16bpp(x+j,  y+i, 255,255,255);
+			}
+		}
+}
+
+void put_string(int x, int y, char *s, unsigned colidx)
+{
+	int i;
+	for (i = 0; *s; i++, x += font_vga_8x8.width, s++)
+	put_char (x, y, *s, colidx);
 }

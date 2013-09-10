@@ -102,7 +102,7 @@ int main()
 
 		scaledX = 	Xaverage / scaleXvalue;
 		scaledY = 	Yaverage / scaleYvalue;
-		drawSquare(scaledX, scaledY);
+		drawSquare(scaledX, scaledY,5,5,WHITE);
 	}
 }
 
