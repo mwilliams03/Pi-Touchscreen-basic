@@ -113,8 +113,7 @@ int main()
 	signal(SIGINT, INThandler);
 
 	int  xres,yres,x;
-//	int Xsamples[20];
-//	int Ysamples[20];
+
 
 	int screenXmax, screenXmin;
 	int screenYmax, screenYmin;
@@ -123,17 +122,15 @@ int main()
 
 	int rawX, rawY, rawPressure, scaledX, scaledY;
 
-//	int Xaverage = 0;
-//	int Yaverage = 0;
+
 
 	//Used to monitor the timers for each button
-//	int buttonTimer1 = mymillis();
+
 	int buttonTimer2 = mymillis();
 	int buttonTimer3 = mymillis();
 	int buttonTimer4 = mymillis();
 
 	//To keep track of the button states
-//	int		button1= BUTTON_OFF;
 	int		button2= BUTTON_OFF;
 	int		button3= BUTTON_OFF;
 	int		button4= BUTTON_OFF;
@@ -159,7 +156,7 @@ int main()
 	printf ("Y Scale Factor = %f\n", scaleYvalue);
 
 
-//	int h;
+
 	createButton(buttonCords2[X],buttonCords2[Y],buttonCords2[W],buttonCords2[H],"RED",GREY,RED);
 	createButton(buttonCords3[X],buttonCords3[Y],buttonCords3[W],buttonCords3[H],"GREEN",GREY,GREEN);
 	createButton(buttonCords4[X],buttonCords4[Y],buttonCords4[W],buttonCords4[H],"BLUE",GREY,BLUE);
@@ -178,7 +175,7 @@ int main()
 
 
 
-		//See if the results retuned by the touch event fall within the coordination.s of the button
+		//See if the results retuned by the touch event fall within the coordinates of the button
                 if((scaledX  > buttonCords2[X] && scaledX < (buttonCords2[X]+buttonCords2[W])) && (scaledY > buttonCords2[Y] && scaledY < (buttonCords2[Y]+buttonCords2[H])))
 			//Has 500ms passed since the last time this button was pressed?
 			if (mymillis() - buttonTimer2 > 500)
