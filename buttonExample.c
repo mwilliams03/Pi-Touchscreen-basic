@@ -1,7 +1,7 @@
 /*
 	A simple program that demonstrates how to program for a
 	touch screen. Specifically on the Raspberry Pi.
-	This prgram can be used for most Linux based systems.
+	This program can be used for most Linux based systems.
 	For more details: www.marks-space.com
 
     Copyright (C) 2013  Mark Williams
